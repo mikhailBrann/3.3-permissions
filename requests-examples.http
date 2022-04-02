@@ -1,0 +1,45 @@
+# примеры API-запросов
+
+#admin - 9bc21f6a4669f452f6508ca48c838c7bc0045cc2
+#castom - 0588251ad83ef222f05a1033a108aa0779189506
+
+@baseUrl = http://localhost:8000/api
+
+# получение объявлений
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+
+###
+
+# создание объявления
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 9bc21f6a4669f452f6508ca48c838c7bc0045cc2
+
+{
+  "title": "Шкаф IKEA",
+  "description": "Срочно"
+}
+
+###
+
+# попытка поменять объявление
+PATCH {{baseUrl}}/advertisements/2/
+Content-Type: application/json
+Authorization: Token 9bc21f6a4669f452f6508ca48c838c7bc0045cc2
+
+{
+  "status": "CLOSED"
+}
+
+###
+
+# фильтрация по создателю
+GET {{baseUrl}}/advertisements/?creator=3
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/advertisements/?created_at_before=2020-10-01
+Content-Type: application/json
